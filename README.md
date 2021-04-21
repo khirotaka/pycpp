@@ -11,7 +11,7 @@ C++でPythonパッケージを書く練習台
 $ python -m venv venv
 $ source venv/bin/activate
 $ pip install -U pip
-$ python setup.py build_ext build
+$ python setup.py build
 $ python setup.py install
 ```
 
