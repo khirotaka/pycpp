@@ -6,14 +6,13 @@ C++でPythonパッケージを書く練習台
 
 
 ## Build
-Building Universal 2 binary
 
 ```sh
 $ python -m venv venv
 $ source venv/bin/activate
-$ pip install -U pip && pip install pybind11
-$ mkdir build
-$ python setup.py build && python setup.py install
+$ pip install -U pip
+$ python setup.py build_ext -I third_party/eigen build
+$ python setup.py install
 ```
 
 ## Coding
