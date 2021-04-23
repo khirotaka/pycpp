@@ -2,12 +2,11 @@ cmake_minimum_required(VERSION 3.17)
 project(pycpp LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
 
 add_subdirectory(third_party/pybind11)
 
 include_directories(third_party/eigen)
+
 pybind11_add_module(pycpp src/main.cpp)
 
 IF (APPLE)
