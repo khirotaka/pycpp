@@ -1,3 +1,4 @@
+#include <pybind11/stl.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/eigen.h>
 #include <Eigen/Dense>
@@ -24,9 +25,24 @@ RMatrix<T> multiply_array(RMatrix<T> m, T value) {
     return m * value;
 }
 
+template <typename T>
+Eigen::Vector<T, -1> create_vector(int size) {
+    Eigen::VectorXd vector = Eigen::VectorXd::Zero(size);
+
+    return vector;
+}
+
+template <typename T>
+RMatrix<T> create_matrix(int rows, int columns) {
+    Eigen::MatrixXd matrix = Eigen::MatrixXd::Zero(rows, columns);
+    return matrix;
+}
+
 namespace py = pybind11;
 
 PYBIND11_MODULE(pycpp, m) {
     m.def("add", &add, "Add two numbers");
     m.def("multiply_array", &multiply_array<double>, "");
+    m.def("create_vector", &create_vector<double>, "");
+    m.def("create_matrix", &create_matrix<double>, "");
 }
