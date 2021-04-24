@@ -57,5 +57,5 @@ PYBIND11_MODULE(pycpp, m) {
           This function using BLAS. \
           If you use Apple Silicon Mac, \
           you will indirectly use Apple AMX Coprocessor,\
-          since it uses BLAS in Accelerate."));
+          since it uses BLAS in Accelerate.");
 }
