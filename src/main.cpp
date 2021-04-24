@@ -14,6 +14,7 @@
  
  Reference: https://qiita.com/lucidfrontier45/items/5048ef74fbf32eeb9f08
  */
+
 template <typename T>
 using RMatrix = Eigen::Matrix<T, -1, -1, Eigen::RowMajor>;
 
@@ -60,6 +61,13 @@ PYBIND11_MODULE(_C, m) {
     m.def("create_vector", &create_vector<double>, "");
     m.def("create_matrix", &create_matrix<double>, "");
     m.def("matmul", &matmul<float>,
+          "The function of matrix multiplication. \
+          This function using BLAS. \
+          If you use Apple Silicon Mac, \
+          you will indirectly use Apple AMX Coprocessor,\
+          since it uses BLAS in Accelerate.");
+    
+    m.def("matmul", &matmul<double>,
           "The function of matrix multiplication. \
           This function using BLAS. \
           If you use Apple Silicon Mac, \
