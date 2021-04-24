@@ -45,6 +45,11 @@ RMatrix<T> matmul(RMatrix<T> a, RMatrix<T> b) {
     auto result = a * b;
     return result;
 }
+
+std::string available_simd_instructions() {
+    return Eigen::SimdInstructionSetsInUse();
+}
+
 namespace py = pybind11;
 
 PYBIND11_MODULE(pycpp, m) {
@@ -58,4 +63,7 @@ PYBIND11_MODULE(pycpp, m) {
           If you use Apple Silicon Mac, \
           you will indirectly use Apple AMX Coprocessor,\
           since it uses BLAS in Accelerate.");
+    
+    m.def("simd_status", &available_simd_instructions,
+          "Returns a string indicating the available SIMD instructions");
 }
