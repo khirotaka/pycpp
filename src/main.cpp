@@ -17,8 +17,8 @@
 template <typename T>
 using RMatrix = Eigen::Matrix<T, -1, -1, Eigen::RowMajor>;
 
-
-int add(int x, int y) {
+template <typename T>
+T add(T x, T y) {
     return x + y;
 }
 
@@ -53,8 +53,10 @@ std::string available_simd_instructions() {
 namespace py = pybind11;
 
 PYBIND11_MODULE(pycpp, m) {
-    m.def("add", &add, "Add two numbers");
-    m.def("multiply_array", &multiply_array<double>, "");
+    m.def("add", &add<int>, "Add two numbers");
+    m.def("add", &add<double>, "Add two numbers");
+    
+    m.def("multiply_array", &multiply_array<float>, "");
     m.def("create_vector", &create_vector<double>, "");
     m.def("create_matrix", &create_matrix<double>, "");
     m.def("matmul", &matmul<float>,
@@ -63,7 +65,6 @@ PYBIND11_MODULE(pycpp, m) {
           If you use Apple Silicon Mac, \
           you will indirectly use Apple AMX Coprocessor,\
           since it uses BLAS in Accelerate.");
-    
     m.def("available_simd_instructions", &available_simd_instructions,
           "Returns a string indicating the available SIMD instructions");
 }
