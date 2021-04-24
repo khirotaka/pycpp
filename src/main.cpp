@@ -64,6 +64,6 @@ PYBIND11_MODULE(pycpp, m) {
           you will indirectly use Apple AMX Coprocessor,\
           since it uses BLAS in Accelerate.");
     
-    m.def("simd_status", &available_simd_instructions,
+    m.def("available_simd_instructions", &available_simd_instructions,
           "Returns a string indicating the available SIMD instructions");
 }
