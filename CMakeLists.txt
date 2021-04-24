@@ -17,6 +17,7 @@ add_subdirectory(third_party/pybind11)
 
 include_directories(third_party/eigen)
 
-pybind11_add_module(_C src/main.cpp)
+pybind11_add_module(_C src/math/vector.cpp)
 pybind11_add_module(utils src/utils/simd.cpp)
 target_link_libraries(_C PRIVATE ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})
+

@@ -69,7 +69,9 @@ def read(filename):
 setup(
     name="pycpp",
     version="0.0.1",
-    ext_modules=[CMakeExtension("pycpp.functions._C")],
+    ext_modules=[
+        CMakeExtension("pycpp.functions._C"),
         CMakeExtension("pycpp.utils")
+        ],
     cmdclass={"build_ext": CMakeBuild},
 )
