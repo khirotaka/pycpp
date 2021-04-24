@@ -52,7 +52,7 @@ std::string available_simd_instructions() {
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(pycpp, m) {
+PYBIND11_MODULE(_C, m) {
     m.def("add", &add<int>, "Add two numbers");
     m.def("add", &add<double>, "Add two numbers");
     
