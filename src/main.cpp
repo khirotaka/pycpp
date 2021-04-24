@@ -1,8 +1,10 @@
+#define EIGEN_USE_BLAS
+#define EIGEN_USE_LAPACKE
+
 #include <pybind11/stl.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/eigen.h>
 #include <Eigen/Dense>
-
 
 /*
  ndarrayはメモリ配置がデフォルトではC言語で主に用いられるRowMajorなのに対し、
@@ -38,6 +40,11 @@ RMatrix<T> create_matrix(int rows, int columns) {
     return matrix;
 }
 
+template <typename T>
+RMatrix<T> matmul(RMatrix<T> a, RMatrix<T> b) {
+    auto result = a * b;
+    return result;
+}
 namespace py = pybind11;
 
 PYBIND11_MODULE(pycpp, m) {
@@ -45,4 +52,10 @@ PYBIND11_MODULE(pycpp, m) {
     m.def("multiply_array", &multiply_array<double>, "");
     m.def("create_vector", &create_vector<double>, "");
     m.def("create_matrix", &create_matrix<double>, "");
+    m.def("matmul", &matmul<float>,
+          "The function of matrix multiplication. \
+          This function using BLAS. \
+          If you use Apple Silicon Mac, \
+          you will indirectly use Apple AMX Coprocessor,\
+          since it uses BLAS in Accelerate."));
 }
