@@ -24,7 +24,7 @@ def blas_matmul(array: np.ndarray):
 
 def main():
     np.random.seed(0)
-    array = np.random.randn(5000, 5000).astype(np.float32)
+    array = np.random.randn(2**12, 2**12).astype(np.float32)
 
     print("BLAS(AMX) Speed: ")
     blas_matmul(array)
