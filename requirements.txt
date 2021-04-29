@@ -1,0 +1,5 @@
+wheel>=0.36.2
+setuptools>=41.2.0
+Cython>=0.29.23
+numpy>=1.20.2
+pytest
