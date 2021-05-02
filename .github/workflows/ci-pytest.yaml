@@ -25,7 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install OpenMP
-        if: "matrix.os == macOS-latest"
+        if: "runner.os == macOS-latest"
         run: |
           brew install libomp
       
