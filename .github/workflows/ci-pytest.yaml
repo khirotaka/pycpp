@@ -25,8 +25,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install OpenMP
-        if: "runner.os == macOS"
+        if: runner.os == "macOS"
         run: |
+          brew update
           brew install libomp
       
       - name: Install Dependencies
