@@ -3,9 +3,6 @@ project(pycpp LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 
-IF (APPLE)
-    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
-ENDIF(APPLE)
 # Numerical Libraries
 find_package(BLAS REQUIRED)
 message(STATUS BLAS: ${BLAS_LIBRARIES})
