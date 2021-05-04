@@ -1,3 +1,5 @@
+from typing import List
+
 def available_simd_instructions() -> str: ...
 def print_hello() -> None: ...
-
+def fetch_list(size: int) -> List[int]: ..
