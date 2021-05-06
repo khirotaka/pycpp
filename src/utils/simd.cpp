@@ -3,6 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <Eigen/Eigen>
 #include <omp.h>
+#include "simd.h"
 
 void print_hello() {
     #pragma omp parallel
